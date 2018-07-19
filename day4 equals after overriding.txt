@@ -1,0 +1,61 @@
+class Passenger {
+			int pnrNo;
+			String name;
+			int fare;
+			
+			public Passenger(int pnrNo, String name, int fare) {
+				super();
+				this.pnrNo = pnrNo;
+				this.name = name;
+				this.fare = fare;
+			}
+
+			@Override
+			public int hashCode() {
+				final int prime = 31;
+				int result = 1;
+				result = prime * result + fare;
+				result = prime * result + ((name == null) ? 0 : name.hashCode());
+				result = prime * result + pnrNo;
+				return result;
+			}
+
+			@Override
+			public boolean equals(Object obj) {
+				if (this == obj)
+					return true;
+				if (obj == null)
+					return false;
+				if (getClass() != obj.getClass())
+					return false;
+				Passenger other = (Passenger) obj;
+				if (fare != other.fare)
+					return false;
+				if (name == null) {
+					if (other.name != null)
+						return false;
+				} else if (!name.equals(other.name))
+					return false;
+				if (pnrNo != other.pnrNo)
+					return false;
+				return true;
+			}
+			
+public class PassengerMain {
+
+	public static void main(String[] args) {
+		Passenger p1 = new Passenger(1234,"Yamini",750);
+		Passenger p2 = new Passenger(1234,"Yamini",750);
+		Passenger p3 = p1;
+		MyMessage m = new MyMessage();
+		System.out.println("p1==p2");
+		System.out.println(p1==p2);
+		System.out.println("p1==p3");
+		System.out.println(p1==p3);
+		System.out.println("p1.equals(p2)");
+		System.out.println(p1.equals(p2));
+		System.out.println("p1.equals(p3)");
+		System.out.println(p1.equals(p3));
+	}
+	
+}

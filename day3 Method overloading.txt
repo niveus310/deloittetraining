@@ -1,0 +1,32 @@
+public class Hello {
+	
+	public void disp()
+      { System.out.println(calling 1);
+		System.out.println(nothing to display);
+	}
+	public void disp(int i, int j)
+    {	System.out.println(calling 2);
+		System.out.print(i);
+		System.out.print(t);
+		System.out.println(j);
+	}
+	public void disp(int...i)
+    {System.out.println(calling 3);
+		for(int ji)
+		{
+			System.out.print(j);
+			System.out.print(t);
+		}
+	}
+	
+	
+	public static void main(String[] args) 
+	{
+		Hello h = new Hello();
+		h.disp();
+		h.disp(0, 1);
+		h.disp(0,1,2,3,4,5,6,7,8,9);
+				
+		}
+		
+}

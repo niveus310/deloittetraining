@@ -1,0 +1,21 @@
+class A
+{ private A()
+	{}
+private static void sayHi()
+ {
+	 System.out.println("hi");
+ }
+ 
+ public static String dd() {
+	 sayHi();
+	 return "yo";
+ }
+	}
+public class Demo {
+public static void main(String[] args) {
+	
+
+	System.out.println(A.dd());
+	
+}
+}

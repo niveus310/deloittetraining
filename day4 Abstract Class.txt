@@ -1,0 +1,43 @@
+package Inheritance;
+
+abstract class Vehicle
+{
+	int price;
+	public Vehicle() {
+		System.out.println("Vehicle Constructor");
+	}
+	public abstract void start();
+	public abstract void stop();
+	public void music()
+	{
+		System.out.println("Music System");
+	}
+	
+}
+
+class Car extends Vehicle
+{
+	public Car() {
+		System.out.println("Car Constructor");
+	}
+	@Override
+	public void start() {
+		price = 900000;
+		System.out.println("Car Started");		
+	}
+
+	@Override
+	public void stop() {
+		System.out.println("Car stopped");
+	}
+}
+
+
+public class MainTwo {
+		public static void main(String[] args) {
+		Vehicle vehicle = new Car();
+		vehicle.start();
+		vehicle.music();
+		vehicle.stop();
+		}
+}

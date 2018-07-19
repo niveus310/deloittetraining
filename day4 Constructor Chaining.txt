@@ -1,0 +1,49 @@
+
+public class ConstructorChaining {
+				int a;
+				String b;
+				int c;
+				
+				public ConstructorChaining() {
+					this.a= 0;
+					this.b = "na";
+					this.c = 0;
+				}
+				public ConstructorChaining(int a, String b, int c) {
+					this();
+					this.a = a;
+					this.b = b;
+					this.c = c;
+				}
+
+				public ConstructorChaining(int a, String b) {
+					this();
+					this.a = a;
+					this.b = b;
+				}
+
+				public ConstructorChaining(String b, int c) {
+					this();
+					this.b = b;
+					this.c = c;
+				}
+
+				public ConstructorChaining(int a, int c) {
+					this();
+					this.a = a;
+					this.c = c;
+				}
+				
+				@Override
+				public String toString() {
+					return "ConstructorChaining [a=" + a + ", b=" + b + ", c=" + c + "]";
+				}
+				public static void main(String[] args) {
+				
+					ConstructorChaining p = new ConstructorChaining(10,20);
+					ConstructorChaining q = new ConstructorChaining(100, "priyal");
+					System.out.println(p.toString());
+					System.out.println(q.toString());
+							
+				}
+}

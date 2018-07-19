@@ -1,0 +1,68 @@
+package Inheritance;
+
+class Animal
+{
+	public Animal()
+	{
+		System.out.println("Animal Constructor");
+	}
+	
+	public void eat()
+	{
+		System.out.println("Animal eats food");
+	}
+}
+
+class Men extends Animal
+{
+	public Men()
+	{
+		System.out.println("Men Constructor");
+	}
+	@Override
+	public void eat()
+	{
+		System.out.println("Men eats Chicken");
+	}
+	public void drink()
+	{
+		System.out.println("Men drink water");
+	}
+}
+
+class Dog extends Animal
+{
+	public Dog()
+	{
+	System.out.println("Dog Constructor");
+	}
+	@Override
+	public void eat()
+	{
+	System.out.println("Dog eats Pedigree");
+	}
+	public void drink()
+	{	
+	System.out.println("Dog drinks milk");
+	}
+
+}
+
+public class Main 
+{
+	public static void main(String[] args) 
+	{
+	System.out.println("without using super class reference");
+	Men m = new Men();
+	m.eat();
+	m.drink();
+	Dog d = new Dog();
+	d.eat();
+	d.drink();
+	System.out.println("using super class refrence");
+	Animal a = new Men();
+	a.eat();
+	a = new Dog();
+	a.eat();
+	}
+}

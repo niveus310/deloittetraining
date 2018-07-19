@@ -1,0 +1,241 @@
+
+	create table persons
+	( lastname varchar(20),
+	  firstname varchar(20),
+	  address varchar(20),
+	  city varchar(20)   );
+
+	Table created.
+
+
+	insert into persons values('neha','kapoor','btm','bangalore');
+
+	1 row created.
+
+	insert into persons values('anil','kapoor','btm','bangalore');
+
+	1 row created.
+
+	insert into persons values('isha','agarwal','marathalli','bangalore');
+
+	1 row created.
+
+	insert into persons values(null,'kapoor','btm','bangalore');
+
+	1 row created.
+
+	insert into persons(firstname,city) values('kapoor','bangalore');
+
+	1 row created.
+
+
+	SQL> select * from persons;
+
+LASTNAME             FIRSTNAME            ADDRESS
+-------------------- -------------------- --------------------
+CITY
+--------------------
+neha                 kapoor               btm
+bangalore
+
+anil                 kapoor               btm
+bangalore
+
+isha                 agarwal              marathalli
+bangalore
+
+
+LASTNAME             FIRSTNAME            ADDRESS
+-------------------- -------------------- --------------------
+CITY
+--------------------
+                     kapoor               btm
+bangalore
+
+                     kapoor
+bangalore
+
+	update persons set lastname = 'priya' where lastname is null;
+
+	2 rows updated.
+
+
+
+	select concat('hello','world') from dual;
+
+CONCAT('HE
+----------
+helloworld
+
+	select length('helloworld') from dual;
+
+LENGTH('HELLOWORLD')
+--------------------
+                  10
+
+	select substr('helloworld',1,5) from dual;
+
+SUBST
+-----
+hello
+
+	select upper('hello') from dual;
+
+UPPER
+-----
+HELLO
+
+	select instr('hello','e') from dual;
+
+INSTR('HELLO','E')
+------------------
+                 2
+
+	select trim('h' from 'hhhhhhello') from dual;
+
+TRIM
+----
+ello
+	select last_day('1-FEB-2018') from dual;
+
+LAST_DAY(
+---------
+28-FEB-18
+
+	select sysdate from dual;
+
+SYSDATE
+---------
+16-JUL-18
+
+	
+
+	create table Students
+	( roll number,
+	  name varchar(20),
+	  marks number  );
+
+	Table created.
+
+	insert into students values (1,'ramesh',90);
+
+	1 row created.
+
+	insert into students values (2,'suresh',null);
+
+	1 row created.
+
+	insert into students values (3,'kishore',78);
+
+	1 row created.
+
+	select nvl(marks,-1) from students;
+
+NVL(MARKS,-1)
+-------------
+           78
+
+	
+
+	select coalesce(null,null,null,89) from dual;
+
+COALESCE(NULL,NULL,NULL,89)
+---------------------------
+                         89
+
+	select lpad(1000,10,'*') from dual;
+
+LPAD(1000,
+----------
+******1000
+
+	select nvl2(marks,to_char(marks),'AB') from students;
+
+NVL2(MARKS,TO_CHAR(MARKS),'AB')
+----------------------------------------
+78
+
+	create table Students2
+	( roll number,
+	  name varchar(20),
+	  dob date,
+	  doj date  );
+
+	Table created.
+
+
+	insert into students2 values (1,'ramesh','1-oct-2000','1-jun-2003');
+
+	1 row created.
+
+	insert into students2 values (2,'suresh','3-oct-1996','19-jul-1999');
+
+	row created.
+
+	into students2 values (3,'kishore',to_date('03/04/1997','dd/mm/yyyy'),to_date('05/06/2001','mm/dd/yyyy'));
+
+	row created.
+
+	select name,floor(months_between(sysdate,dob)/12) as age from students2;
+
+NAME                        AGE
+-------------------- ----------
+ramesh                       17
+suresh                       21
+kishore                      21
+
+	create table students3
+	( roll varchar(10) primary key,
+	  name varchar(20) not null,
+	  address varchar(20) check(address in ('Chennai','Bangalore')),
+	  marks number check(marks between 0 and 100)  );
+
+	Table created.
+
+	insert into students3 values(1,null,'mumbai',190);
+	insert into students3 values(1,null,'mumbai',190)
+                               *
+	ERROR at line 1:
+	ORA-01400: cannot insert NULL into ("SCOTT"."STUDENTS3"."NAME")
+
+
+	create table loan_payment
+	( loanno number(4) constraint myloanconstraint primary key,
+	  loanstatus varchar(20) constraint myloanstatus check(loanstatus = upper(loanstatus)),
+	  loanamount number(10) not null,
+	  update_date date default sysdate,
+	  productkey varchar(5)  );
+
+	Table created.
+
+	insert into loan_payment values(1001,'APPROVED',8000,default,'p0001');
+
+	1 row created.
+
+	insert into loan_payment values(1001,'APPROVED',8000,default,'p0001');
+	insert into loan_payment values(1001,'APPROVED',8000,default,'p0001')
+	*
+	ERROR at line 1:
+	ORA-00001: unique constraint (SCOTT.MYLOANCONSTRAINT) violated
+
+
+	insert into loan_payment values(1002,'approved',8000,default,'p0001');
+	insert into loan_payment values(1002,'approved',8000,default,'p0001')
+	*
+	ERROR at line 1:
+	ORA-02290: check constraint (SCOTT.MYLOANSTATUS) violated
+
+
+	insert into loan_payment values(1002,'approved',null,default,'p0001');
+	insert into loan_payment values(1002,'approved',null,default,'p0001')
+                                                *
+	ERROR at line 1:
+	ORA-01400: cannot insert NULL into ("SCOTT"."LOAN_PAYMENT"."LOANAMOUNT")
+
+
+	insert into loan_payment values(1002,'DECLINED',10000,default,'p0002');
+
+	1 row created.
+
+
+	

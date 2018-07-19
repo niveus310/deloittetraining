@@ -1,0 +1,123 @@
+Exercise Objective(s): Overloading
+
+Exercise: Create a class called Calculator which has 4 different methods add, diff, mul and div that accept two numbers as parameters. Overload the methods such that the parameters can be of the following pattern. 
+a)	Both are of int data type. 
+b)	Both are of double data type. 
+c)	First parameter is of int data type and second parameter is of double data type. 
+d)	First parameter is of double data type and second parameter is of int data type
+
+    Create an object to access these methods and invoke these methods
+ with different type of numbers and display the result in the corresponding methods. 
+
+Solution: 
+
+import java.util.Scanner;
+
+class Calculator {
+	
+	public void add(int num1,int num2) 
+	{
+		System.out.println("Sum : "+(num1+num2));
+	}
+	public void diff(int num1,int num2) 
+	{
+		System.out.println("Difference : "+(num1-num2));
+	}
+	public void mul(int num1,int num2)
+	{
+		System.out.println("Product : "+(num1*num2));	
+	}
+	public void div(int num1,int num2)
+	{
+		System.out.println("Quotient : "+(num1/num2));
+	}
+	public void add(double num1, double num2) 
+	{
+		System.out.println("Sum : "+(num1+num2));
+		
+	}
+	public void diff(double num1, double num2)
+	{
+		System.out.println("Difference : "+(num1-num2));
+	}
+	public void mul(double num1, double num2) 
+	{
+		System.out.println("Product : "+(num1*num2));
+	}
+	public void div(double num1, double num2)
+	{
+		System.out.println("Quotient : "+(num1/num2));
+	}
+	public void add(int num1,double num2) 
+	{
+		System.out.println("Sum : "+(num1+num2));
+	}
+	public void diff(int num1,double num2)
+	{
+		System.out.println("Difference : "+(num1-num2));
+	}
+	public void mul(int num1,double num2) 
+	{
+		System.out.println("Product : "+(num1*num2));
+	}
+	public void div(int num1,double num2)
+	{
+		System.out.println("Quotient : "+(num1/num2));
+	}
+	public void add(double num1, int num2) 
+	{
+		System.out.println("Sum : "+(num1+num2));
+	}
+	public void diff(double num1, int num2) 
+	{
+		System.out.println("Difference : "+(num1-num2));
+	}
+	public void mul(double num1, int num2) 
+	{
+		System.out.println("Product : "+(num1*num2));
+	}
+	public void div(double num1, int num2)
+	{
+		System.out.println("Quotient : "+(num1/num2));
+	}
+
+
+}
+
+
+public class CalculatorMain {
+	public static void main(String[] args) {
+	int num1,num2;
+	double num3,num4;
+	Scanner sc = new Scanner(System.in);
+	System.out.println("Enter first integer");
+	num1=sc.nextInt();
+	System.out.println("Enter second integer");
+	num2=sc.nextInt();
+	System.out.println("Enter first double");
+	num3=sc.nextDouble();
+	System.out.println("Enter second double");
+	num4=sc.nextDouble();
+	
+	Calculator c = new Calculator();
+	c.add(num1,num2);
+	c.diff(num1,num2);
+	c.mul(num1,num2);
+	c.div(num1,num2);
+	c.add(num3,num4);
+	c.diff(num3,num4);
+	c.mul(num3,num4);
+	c.div(num3,num4);
+	c.add(num1,num4);
+	c.diff(num1,num4);
+	c.mul(num1,num4);
+	c.div(num1,num4);
+	c.add(num3,num2);
+	c.diff(num3,num2);
+	c.mul(num3,num2);
+	c.div(num3,num2);
+	System.out.println(Double.MAX_VALUE);
+	sc.close(); 
+	}
+
+}

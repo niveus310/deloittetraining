@@ -1,0 +1,17 @@
+public class Hello {
+	
+	public int addNumbers(int num1, int num2)
+	{
+		return num1+num2;
+	}
+	public static void main(String[] args) {
+		int sum=0;
+		Hello h =  new Hello();
+		sum+=h.addNumbers(2, 4);
+		sum+=h.addNumbers(5, 6);
+		sum+=h.addNumbers(5, 8);
+		
+		System.out.println("the total sum is "+sum);
+	}
+		
+}

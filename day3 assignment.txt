@@ -1,0 +1,113 @@
+Mandated Programming Practices for the course: 
+1.	It is important that code must use meaningful names, conventions, appropriate constructs and indentation.
+2.	Every function must be preceded by short and meaningful comments explaining the purpose of the function.
+3.	It is important and implicit that all the data entered for the program should be valid. 
+
+1.	The temperatures of the cities across various countries are continuously monitored. 
+	A warning is displayed in cases where temperature goes beyond intolerable range. 
+	The temperature will be entered either in the form of Celsius or Fahrenheit. 
+	The conversion formula is C=5(F-32)/19. 
+	If the temperature is beyond 60 degree Celsius or below -10 degree Celsius, warning has to be displayed. 
+
+
+Solution :
+
+
+import java.util.Scanner;
+
+public class WeatherSystem 
+{
+		double temperature;
+		String city;
+		String country;
+
+		
+		public WeatherSystem(double temperature,String city, String country)
+		{
+			this.temperature = temperature ;
+			this.city = city;
+			this.country = country;
+		}
+		
+		public String getCity() 
+		{
+			return city;
+		}
+				
+		public String getCountry()
+		{
+			return country;
+		}
+		
+		public double getTemperature()
+		{
+			return temperature;
+		}
+		
+		public void convertToCelsius()
+		{
+			temperature = 5*(temperature-32)/9;
+		}
+		
+		public void checkWeather()
+		{
+			if((temperature > 60)||(temperature <-10))
+			System.out.println("***WEATHER WARNING***");
+			else
+			System.out.println("No weather warning");
+		}
+
+
+		@Override
+		public String toString() {
+			return "Temperature= " + temperature + ", \nCity= " + city + ", \nCountry= " + country;
+		}
+
+		public static void main(String[] args)
+		{
+			
+			char choice;
+			double temp;
+			String city;
+			String country;
+			char choose;
+			
+			Scanner sc = new Scanner(System.in);
+			
+			do
+			{
+			System.out.println("Do you want to enter in Celsius or Fahrenheit");
+			choice = sc.next().charAt(0);
+
+			
+			System.out.println("Print the City");
+			city = sc.next();
+			
+			
+			System.out.println("Print the Country");
+			country = sc.next();
+			
+			System.out.println("Print the temperature");
+			temp = sc.nextDouble();
+			
+			WeatherSystem weather = new WeatherSystem(temp,city,country);
+			
+			
+			if((choice=='f')||(choice=='F'))
+			{weather.convertToCelsius();}		
+			
+			System.out.println(weather.toString());
+			
+			weather.checkWeather();
+			
+			System.out.println("Do you want to continue for another city y or n");
+			choose = sc.next().charAt(0);
+			
+			}while((choose=='y')||(choose=='Y'));
+		
+			sc.close();
+		
+		}
+		
+}
+	

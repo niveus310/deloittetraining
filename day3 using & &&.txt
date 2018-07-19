@@ -1,0 +1,18 @@
+public class Hello {
+	
+	public int addNumbers(int num1, int num2)
+      {return num1+num2;
+	}
+	
+	public static void main(String[] args) {
+		int i,j;
+		i=0;
+		j=2;
+		boolean b;
+		b = (i>j) && (++j>i);
+		System.out.println(j);
+		b = (i>j) & (++j>i);
+		System.out.println(j);
+	}
+		
+}

@@ -1,0 +1,30 @@
+package Demo;
+class Passenger {
+			int pnrNo;
+			String name;
+			int fare;
+			
+			public Passenger(int pnrNo, String name, int fare) {
+				super();
+				this.pnrNo = pnrNo;
+				this.name = name;
+				this.fare = fare;
+			}
+
+public class PassengerMain {
+
+	public static void main(String[] args) {
+		Passenger p1 = new Passenger(1234,"Yamini",750);
+		Passenger p2 = new Passenger(1234,"Yamini",750);
+		Passenger p3 = p1;
+		System.out.println("p1==p2");
+		System.out.println(p1==p2);
+		System.out.println("p1==p3");
+		System.out.println(p1==p3);
+		System.out.println("p1.equals(p2)");
+		System.out.println(p1.equals(p2));
+		System.out.println("p1.equals(p3)");
+		System.out.println(p1.equals(p3));
+	}
+	
+}

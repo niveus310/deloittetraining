@@ -1,0 +1,32 @@
+public class Hello {
+		public void display()
+		{ How how = new How();
+		  how.hi();
+			System.out.println("Display called");
+		}
+		public void accept()
+		{
+			System.out.println("Accept called");
+			Hello hello = new Hello();
+			hello.display();
+		}
+		
+		public static void main(String[] args) {
+			System.out.println("Welcome Again");
+			Hello h = new Hello();
+			h.display();
+			h.accept();
+			System.out.println("Main has ended");
+		}
+}
+
+class How
+{
+	public void hi()
+	{
+		System.out.println("this belongs to how");
+	}
+	public static void main(String[] args) {
+		System.out.println("hi im how");
+	}
+}

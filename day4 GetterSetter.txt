@@ -1,0 +1,43 @@
+public class GetterSetter {
+				private int cusId;
+				private String custName;
+				private int billAmount;
+				
+				public int getCusId() {
+					return cusId;
+				}
+				public void setCusId(int cusId) {
+					this.cusId = cusId;
+				}
+				@Override
+				public String toString() {
+					return "GetterSetter [cusId=" + cusId + ", custName=" + custName + ", billAmount=" + billAmount
+							+ "]";
+				}
+				public String getCustName() {
+					return custName;
+				}
+				public void setCustName(String custName) {
+					this.custName = custName;
+				}
+				public int getBillAmount() {
+					return billAmount;
+				}
+				public GetterSetter()
+				{
+					cusId =0;
+					custName = "NA";
+					billAmount = 0;
+							
+				}
+				public GetterSetter(int cusId, String custName, int billAmount) {
+					this();
+					this.cusId = cusId;
+					this.custName = custName;
+					this.billAmount = billAmount;
+				}
+				public void setBillAmount(int billAmount) {
+					this.billAmount = billAmount;
+				}
+				
+}
