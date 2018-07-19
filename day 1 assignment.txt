@@ -1,0 +1,116 @@
+Create a table called Employee with the following Columns  and perform the following operations:-
+------------------------------------------------------------------------------------------------------------
+
+EmployeeID    
+EmployeeName   
+EmployeeAddress : 
+DOB
+DOJ
+Salary
+
+
+a.) Insert five records
+
+b) Retrieve all the records
+
+
+c) Retrieve the Employee name whose salary is greater than 20000
+
+d) Retrieve the Employee name whose address contains 'a' or 'p' or 'r'  as the last character
+ 
+e) Increase the Salary of all the Employee by 20%
+
+f) Delete all the employee records whose salary is less than 5000
+
+Solution:
+
+	create table Employee
+	( EmployeeID number(5) CONSTRAINT myemployeeid PRIMARY KEY,
+	  EmployeeName varchar(20) CONSTRAINT myemployeename not null,
+	  EmployeeAddress varchar(20) CONSTRAINT myemployeeaddress not null,
+	  DOB DATE CONSTRAINT myempdob not null,
+	  DOJ DATE CONSTRAINT myempdoj not null,
+	  Salary number check (Salary >=0)
+	);
+
+	Table created.
+
+a)
+
+	insert into Employee values('01000','Athul','Chennai','01-JAN-1990','01-JAN-2010',50000);
+
+	1 row created.
+
+	insert into Employee values('01001','Balaji','Bangalore','01-JAN-1992','01-JAN-2012',48000);
+
+	1 row created.
+
+	insert into Employee values('01002','Chitra','Mumbai','01-JAN-1994','01-JAN-2014',46000);
+
+	1 row created.
+
+	insert into Employee values('01003','Anuya','Kolkata','01-JAN-1996','01-JAN-2016',44000);
+
+	1 row created.
+
+	insert into Employee values('01004','Manoj','Chennai','01-JAN-1988','01-JAN-2008',52000);
+
+	1 row created.
+
+b)
+	select * from Employee;
+
+EMPLOYEEID EMPLOYEENAME         EMPLOYEEADDRESS      DOB       DOJ
+---------- -------------------- -------------------- --------- ---------
+    SALARY
+----------
+      1000 Athul                Chennai              01-JAN-90 01-JAN-10
+     50000
+
+      1001 Balaji               Bangalore            01-JAN-92 01-JAN-12
+     48000
+
+      1002 Chitra               Mumbai               01-JAN-94 01-JAN-14
+     46000
+
+
+EMPLOYEEID EMPLOYEENAME         EMPLOYEEADDRESS      DOB       DOJ
+---------- -------------------- -------------------- --------- ---------
+    SALARY
+----------
+      1003 Anuya                Kolkata              01-JAN-96 01-JAN-16
+     44000
+
+      1004 Manoj                Chennai              01-JAN-88 01-JAN-08
+     52000
+
+c)
+	select EmployeeName from Employee where Salary >20000;
+
+EMPLOYEENAME
+--------------------
+Athul
+Balaji
+Chitra
+Anuya
+Manoj
+
+
+d)	
+	select EmployeeName from Employee where EmployeeName like '%a' or EmployeeName like '%p' or EmployeeName like '%r';
+
+EMPLOYEENAME
+--------------------
+Chitra
+Anuya
+
+e)
+
+	 update Employee set Salary=Salary*1.2;
+
+	5 rows updated.
+
+f)
+	 delete from Employee where Salary<5000;
+
+	0 rows deleted.
