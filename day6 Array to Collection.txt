@@ -1,0 +1,16 @@
+package Collections;
+
+import java.util.*;
+
+public class Main3 {
+
+	public static void main(String[] args) {
+		String str[] = {"Raji","Rohan","Uday","Tarun"};
+		
+		List<String> list = Arrays.asList(str);
+		List<String> pp = new ArrayList<String>();
+		pp.addAll(list);
+		pp.add(3,"Ram");
+		System.out.println(pp);
+	}
+}

@@ -1,0 +1,188 @@
+package Customer;
+
+public class Customer implements Comparable<Customer> {
+		
+		private int customerId;
+		private String customerName;
+		private String customerAddress;
+		private int billAmount;
+		
+		
+		public Customer() {
+			super();
+		}
+		
+		
+		public Customer(int customerId, String customerName, String customerAddress, int billAmount) {
+			super();
+			this.customerId = customerId;
+			this.customerName = customerName;
+			this.customerAddress = customerAddress;
+			this.billAmount = billAmount;
+		}
+		
+		
+		
+		public int getCustomerId() {
+			return customerId;
+		}
+
+
+		public void setCustomerId(int customerId) {
+			this.customerId = customerId;
+		}
+
+
+		public String getCustomerName() {
+			return customerName;
+		}
+
+
+		public void setCustomerName(String customerName) {
+			this.customerName = customerName;
+		}
+
+
+		public String getCustomerAddress() {
+			return customerAddress;
+		}
+
+
+		public void setCustomerAddress(String customerAddress) {
+			this.customerAddress = customerAddress;
+		}
+
+
+		public int getBillAmount() {
+			return billAmount;
+		}
+
+
+		public void setBillAmount(int billAmount) {
+			this.billAmount = billAmount;
+		}
+
+		
+		
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + billAmount;
+			result = prime * result + ((customerAddress == null) ? 0 : customerAddress.hashCode());
+			result = prime * result + customerId;
+			result = prime * result + ((customerName == null) ? 0 : customerName.hashCode());
+			return result;
+		}
+
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Customer other = (Customer) obj;
+			if (billAmount != other.billAmount)
+				return false;
+			if (customerAddress == null) {
+				if (other.customerAddress != null)
+					return false;
+			} else if (!customerAddress.equals(other.customerAddress))
+				return false;
+			if (customerId != other.customerId)
+				return false;
+			if (customerName == null) {
+				if (other.customerName != null)
+					return false;
+			} else if (!customerName.equals(other.customerName))
+				return false;
+			return true;
+		}
+
+		
+		
+		@Override
+		public int compareTo(Customer o) {
+			if(this.getBillAmount() > o.getBillAmount())
+			return 1;
+			//else if(this.getCustomerName().compareTo(o.getCustomerName())>0)
+			else
+				return -1;
+			 
+		
+		}
+		@Override
+		public String toString() {
+			return "Customer Id=" + customerId + ", Customer Name=" + customerName + ", Customer Address="
+					+ customerAddress + ", Bill Amount=" + billAmount ;
+		}
+}
+		
+
+package Customer;
+
+import java.util.*;
+
+public class CustomerMain {
+	
+	public static void main(String[] args) {
+		
+	
+		List<Customer> allCustomers = new ArrayList<Customer>();
+		
+		allCustomers.add(new Customer(10,"Uma","Pune",76000));
+		allCustomers.add(new Customer(11,"Anu","Agra",98000));
+		allCustomers.add(new Customer(12,"Yamini","Jaipur",32000));
+		allCustomers.add(new Customer(13,"Zeba","Delhi",2000));
+		allCustomers.add(new Customer(14,"Hema","Mumabai",9000));
+		allCustomers.add(new Customer(15,"Om","Delhi",18000));
+		
+		System.out.println("Printing all Customers");
+		
+		for(Customer c:allCustomers)
+			{System.out.println(c);}
+		
+		Collections.sort(allCustomers);
+		
+			System.out.println("Printing all Customers after sorting");
+		
+		for(Customer c:allCustomers)
+			{System.out.println(c);}
+		
+		Collections.sort(allCustomers, new CustomerAddressComparator());
+		
+		System.out.println("Printing all Customers after sorting based on Address");
+		
+		for(Customer c:allCustomers)
+			{System.out.println(c);}
+		
+		
+
+		
+
+	}
+}
+
+
+package Customer;
+
+import java.util.Comparator;
+
+public class CustomerAddressComparator implements Comparator<Customer> {
+
+	@Override
+	public int compare(Customer o1, Customer o2) {
+	if(o1.getCustomerAddress().compareTo(o2.getCustomerAddress())>0)
+		return 1;
+	else if(o1.getCustomerAddress().compareTo(o2.getCustomerAddress())==0)
+	{
+		return o1.compareTo(o2);
+	}
+	else
+		return -1;
+	}
+
+}
