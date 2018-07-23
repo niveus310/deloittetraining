@@ -1,0 +1,42 @@
+package Exeception;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+class InputAge
+{  int age;
+ public void display()
+ {
+	 Scanner sc = new Scanner(System.in);
+	 System.out.println("Enter your age :");
+	 try {
+	 age = sc.nextInt();
+	 
+	 if(age<0||age>120)
+		 throw new InvalidAgeException("Please enter a valid age");
+	 System.out.println("your age is "+age);
+		 }
+	 catch(InputMismatchException e)
+	 {
+		 System.out.println("Enter a number");
+	 }
+	 catch(InvalidAgeException e)
+	 {
+		 System.out.println(e.getMessage());
+	 }
+	 finally
+	 {
+		 sc.close();
+	 }
+ }
+}
+
+public class MainTwo {
+
+		public static void main(String[] args) {
+			InputAge i = new InputAge();
+			i.display();
+		
+		}
+
+}

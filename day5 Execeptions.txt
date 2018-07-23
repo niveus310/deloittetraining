@@ -1,0 +1,64 @@
+package Exeception;
+
+class Unchecked{
+	int arr[] = new int[10];
+	public void display()
+	{	
+		try {
+			System.out.println(arr[10]);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		finally {
+			
+			try {
+				int p = 1/0;
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+			finally {
+				System.out.println("bye exception1");
+			}
+			System.out.println("bye exception2");
+		}
+		
+		
+	}
+}
+
+class Checked{
+	int arr[] = new int[10];
+public void display()
+{	
+	try {
+		Thread.sleep(3000);
+	} catch (Exception e) {
+		System.out.println(e);
+	}
+	finally {
+		
+		try {
+			Class.forName("abc");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		finally {
+			System.out.println("bye exception1");
+		}
+		System.out.println("bye exception2");
+	}
+	
+	
+}
+}
+
+public class MainOne {
+		public static void main(String[] args) {
+				System.out.println("hello main");
+				Unchecked u = new Unchecked();
+				u.display();
+				Checked c = new Checked();
+				c.display();
+				System.out.println("bye main");
+		}
+}

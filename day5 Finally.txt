@@ -1,0 +1,34 @@
+package Exeception;
+
+class Finally{
+	int i=100;
+	int num = 10;
+	public int display()
+	{
+		i++;
+		try {
+			if(num==10)
+			return i;
+			int p;
+			p=1/0;
+			System.out.println(p);
+		}
+		catch(Exception e)
+		{i++;
+		}
+		finally
+		{
+			i=i+10;
+			System.out.println(i);
+		}
+	return i;
+	}
+	
+}
+
+public class MainThree {
+		public static void main(String[] args) {
+			Finally f = new Finally();
+			System.out.println(f.display());
+		}
+}
