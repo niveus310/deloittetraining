@@ -1,0 +1,16 @@
+package Demo;
+// Creating thread using anonymous class
+public class ThreadDemo2 {
+
+	public static void main(String[] args) {
+		System.out.println("Main called by" + Thread.currentThread().getName());
+		Thread t = new Thread()
+				{
+					@Override
+					public void run() {
+					System.out.println("Main called by" + Thread.currentThread().getName());
+					}
+				};
+		t.start();
+	}
+}

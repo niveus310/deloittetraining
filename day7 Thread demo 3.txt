@@ -1,0 +1,42 @@
+package Demo;
+class Print
+{
+	public synchronized static void printSomething(String firstName,String lastName)
+	{
+		System.out.println("Welcome "+firstName);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Bye "+lastName);
+		
+	}
+}
+public class ThreadDemo4 extends Thread{
+	private String firstName;
+	private String lastName;
+	
+	public ThreadDemo4(int i,String firstName,String lastName) {
+		super(i+"");
+		this.firstName = firstName;
+		this.lastName = lastName;
+		start();
+		}
+	@Override
+	public void run() {
+	
+	Print.printSomething(firstName,lastName);
+	}
+	
+	public static void main(String[] args) {
+System.out.println("Main called by " + Thread.currentThread().getName());
+		
+			new ThreadDemo4(1,"Puja","Aggarwal");
+			new ThreadDemo4(2,"Kiran","Mehta");
+			new ThreadDemo4(3,"Neha","Payal");
+	
+	}
+
+}

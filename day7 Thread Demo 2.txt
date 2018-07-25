@@ -1,0 +1,31 @@
+package Demo;
+
+public class ThreadDemo extends Thread {
+
+	Thread t1;
+	public ThreadDemo()
+	{
+		t1= new Thread(this);
+		t1.setName("Child Thread");
+		t1.start();
+		System.out.println("t1 started "+Thread.currentThread().getName());
+	}
+	public void run()
+	{	System.out.println("Welcome to run "+Thread.currentThread().getName());
+		for (int i = 0; i < 4; i++) {
+			System.out.println("Run Called " + Thread.currentThread().getName());
+			
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		}
+	}
+	public static void main(String[] args) {
+	Thread m = Thread.currentThread();
+	m.setName("Deloitte");
+	ThreadDemo d = new ThreadDemo();
+	System.out.println("Main called "+Thread.currentThread().getName());
+	}
+}

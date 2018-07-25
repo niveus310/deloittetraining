@@ -1,0 +1,14 @@
+package Demo;
+
+public class GenericMain <Z> {
+
+		public void display(Z value) {
+		System.out.println(value);	
+		}
+		public static void main(String[] args) {
+		GenericMain<Integer> g1 = new GenericMain<Integer>();
+		g1.display(122);
+		GenericMain<String> g2 = new GenericMain<String>();
+		g2.display("Hey");
+		}
+}

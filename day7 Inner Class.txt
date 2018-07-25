@@ -1,0 +1,34 @@
+package Demo;
+class A
+{ 	String password = "hello123@ritika";
+		
+	public class ChangePassword
+	{ int passwordChangedDays =10;
+	  public void display()
+	  {
+		  System.out.println(passwordChangedDays);
+		  System.out.println("Old :" + password);
+		  password = "hey897987";
+	  }
+	
+	}
+
+	public void changePassword()
+	{
+		ChangePassword password = new ChangePassword();
+		password.display();
+		System.out.println("New :"+this.password);
+	}
+	
+	}
+public class MainTwo {
+	public static void main(String[] args) {
+	
+		A a = new A();
+		a.changePassword();
+
+		A.ChangePassword f = a.new ChangePassword();
+		f.display();
+}		
+}
+

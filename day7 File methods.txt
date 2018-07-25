@@ -1,0 +1,45 @@
+package Demo;
+
+import java.io.File;
+import java.io.IOException;
+
+public class FileMain {
+	
+	public static void main(String[] args) {
+	File file1 = new File("c:\\Batch\\Batchmates.txt");
+	File file2 = new File("c:\\Batch");
+	
+	if(file1.exists())
+	{
+		
+	}
+	else
+	{
+	boolean b = file2.mkdir();
+	if(b)
+	{
+		try {
+			file1.createNewFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	}
+	File[] filelist = file2.listFiles();
+	
+	for(File f : filelist)
+	{
+		if(f.isDirectory())
+		{
+		System.out.println(f.getName() + " is a Directory");
+		}
+		else if (f.isFile())
+		{
+		System.out.println(f.getName() + " is a File");	
+		}
+	}
+	
+	}
+
+}

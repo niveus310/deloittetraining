@@ -1,0 +1,22 @@
+package Demo;
+
+public class ThreadDemo3 extends Thread {
+		
+		
+	public ThreadDemo3(int i) {
+	super(i+"");
+	start();
+	}
+	@Override
+	public void run() {
+		System.out.println("Run called by " + Thread.currentThread().getName());
+	}
+		public static void main(String[] args) {
+		System.out.println("Main called by " + Thread.currentThread().getName());
+		
+		for (int j = 1; j <=10 ; j++) {
+			new ThreadDemo3(j);
+		}
+		}
+}
+
