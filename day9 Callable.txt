@@ -1,0 +1,19 @@
+package com.connection;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+public class UsingCallable {
+	public static void main(String[] args) throws SQLException {
+		
+	
+	Connection connection = MyConnection.getConnection();
+	
+	CallableStatement statement = connection.prepareCall("{call firstp(?,?)}");
+	statement.setInt(1, 4);
+	statement.setString(2, "Dipa");
+	statement.execute();
+	connection.close();
+	}
+}

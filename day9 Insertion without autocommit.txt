@@ -1,0 +1,52 @@
+package com.connection;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class JDBCInsertTest {
+
+	public static void main(String[] args) throws SQLException {
+		Connection connection = MyConnection.getConnection();
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		connection.setAutoCommit(false);
+		
+		try {
+			System.out.println("Enter Roll:");
+			int roll = scanner.nextInt();
+			
+			System.out.println("Enter Bank Name");
+			String name = scanner.next();
+			
+			
+			PreparedStatement statement = connection.prepareStatement("insert into students values(?,?)");
+			statement.setInt(1, roll);
+			statement.setString(2, name);
+		
+			
+			statement.executeUpdate();
+
+			System.out.println("Enter Roll:");
+			int roll2 = scanner.nextInt();
+			
+			System.out.println("Enter Bank Name");
+			String name2 = scanner.next();
+			
+			
+			PreparedStatement statement2 = connection.prepareStatement("insert into students values(?,?)");
+			statement2.setInt(1, roll2);
+			statement2.setString(2, name2);
+		
+			statement2.executeUpdate();
+			connection.commit();
+			connection.close();
+		} catch (Exception e) {
+			connection.rollback();
+			}
+		
+		scanner.close();
+	}
+}

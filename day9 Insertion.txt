@@ -1,0 +1,19 @@
+package com.connection;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class JDBCConnectionTest 	{
+	public static void main(String[] args) throws SQLException {
+		
+	
+	Connection connection = MyConnection.getConnection();
+	Statement statement = connection.createStatement();
+	int rowsAffected = statement.executeUpdate("insert into bank_info values('SBIPG0203','SBI','PERUNGUDI')");
+	System.out.println(rowsAffected+" row(s) inserted successfully");
+	
+	connection.close();
+	}
+
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Deloitte</title>
+</head>
+<body background = "download.jfif">
+	<b>Hello all</b>
+	<font color="yellow" size="20" face="Comic sans ms">
+	<center>Hello and welcome to Deloitte</center>
+	Thanks<br/>
+	<br/>
+	<big><i>hey</i></big>
+	<a href="http://www.youtube.com">Youtube</a>
+	<a href="#soc">Social</a>
+	<a href = "Product.html" target = _new>Product</a>	<!-- Hello im comment -->
+	</font>
+	<hr color = "green">
+	<pre>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a name = "soc">
+	social network
+	</a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</pre>
+	
+	
+</body>
+</html>

@@ -1,0 +1,24 @@
+package com.connection;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class UsingBatch {
+		public static void main(String[] args) throws SQLException {
+			Connection connection = MyConnection.getConnection();
+			connection.setAutoCommit(false);
+			Statement statement = connection.createStatement();
+			
+			statement.addBatch("insert into students values(3,'cibi')");
+			statement.addBatch("insert into students values(4,'dipa')");
+			statement.addBatch("insert into students values(5,'emil')");
+			
+			int[] updateCounts = statement.executeBatch();
+			connection.commit();
+			connection.close();
+			
+			for(int i:updateCounts)
+			System.out.println(i);
+		}
+}

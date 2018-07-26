@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Products</title>
+</head>
+<body bgcolor="cyan">
+<h1>Product detail</h1>
+
+<table border="10">
+	<th>ProductId</th><th>Product name</th><th>Price</th>
+	<tr><td>12</td><td>Mouse</td><td rowspan="2">120</td></tr>
+	<tr><td>15</td><td>Pendrive</td></tr>
+	<tr><td>13</td><td>Keyboard</td><td>1260</td></tr>
+	<tr><td>14</td><td>Cable</td><td>150</td></tr>
+	</table>
+
+<a href="home.html">back</a>
+</body>
+</html>

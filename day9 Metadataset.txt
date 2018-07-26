@@ -1,0 +1,40 @@
+package com.connection;
+
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class MetaDetaTest {
+	public static void main(String[] args) throws SQLException {
+		Connection connection = MyConnection.getConnection();
+		DatabaseMetaData dbinfo = connection.getMetaData();
+		System.out.println(dbinfo.storesUpperCaseQuotedIdentifiers());
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter table name:");
+		String tableName = scanner.next();
+		
+		Statement statement = connection.createStatement();
+		
+		ResultSet resultSet = statement.executeQuery("select * from "+tableName);
+		
+		ResultSetMetaData rsmd = resultSet.getMetaData();
+		int columnCount = rsmd.getColumnCount();
+		
+		System.out.println("The result is:");
+		while(resultSet.next())
+		{
+		for(int i=1;i<=columnCount;i++)
+		{
+			System.out.print(resultSet.getString(i)+"  ");
+		}
+		System.out.println();
+		}
+		scanner.close();
+		connection.close();
+	}
+}
+
