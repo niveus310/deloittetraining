@@ -1,0 +1,26 @@
+package Demo;
+
+import java.io.BufferedInputStream;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class ReadingFromFile {
+	public static void main(String[] args) throws IOException {
+		String n;
+		int p=0,q=0;
+		
+		DataInputStream stream = new DataInputStream(
+				new BufferedInputStream(
+						new FileInputStream(
+								new File("c:\\Batch\\writefile.txt"))));
+		n=stream.readUTF();
+		p=stream.readInt();
+		q=stream.readInt();
+		
+		System.out.println(n + ", your bill amount is "+ (p*q));
+		
+		stream.close();
+	}
+}

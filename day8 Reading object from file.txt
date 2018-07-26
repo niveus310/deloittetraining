@@ -1,0 +1,20 @@
+package Customer;
+
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+public class CustomerRead {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
+		FileInputStream stream = new FileInputStream("customer.txt");
+		BufferedInputStream bs = new BufferedInputStream(stream);
+		ObjectInputStream ot = new ObjectInputStream(bs);
+		
+		Customer customer = (Customer) ot.readObject();
+		System.out.println(customer.getCustomerName()+", here are your details");
+		System.out.println(customer);
+		ot.close();
+	}
+
+}

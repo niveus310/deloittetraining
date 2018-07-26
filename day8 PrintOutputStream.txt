@@ -1,0 +1,18 @@
+package Demo;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+
+public class MainThree {
+
+	@SuppressWarnings(resource)
+	public static void main(String[] args) throws IOException {
+		FileOutputStream fout = new FileOutputStream(mfile.txt);
+		PrintStream pout  = new PrintStream(fout);
+		pout.println(1900);
+		pout.println(Hello Java);
+		pout.close();
+		fout.close();
+	}
+}

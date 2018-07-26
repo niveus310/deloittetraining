@@ -1,0 +1,33 @@
+package Demo;
+
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+
+public class FileMain1 {
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("Tell your name");
+		String name = br.readLine();
+		System.out.println("Tell your Price");
+		int price = Integer.parseInt(br.readLine());
+		System.out.println("Tell your quantity");
+		int quantity =Integer.parseInt(br.readLine());
+		
+		FileOutputStream writer = new FileOutputStream("c:\\Batch\\writefile.txt");
+		BufferedOutputStream bs = new BufferedOutputStream(writer);
+		DataOutputStream ds = new DataOutputStream(bs);
+		
+		ds.writeUTF(name);
+		ds.writeInt(price);
+		ds.writeInt(quantity);
+		System.out.println(name+ " your data has been saved permanantly");
+		ds.close();
+		bs.close();
+		writer.close();
+	}
+}

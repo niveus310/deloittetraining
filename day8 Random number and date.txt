@@ -1,0 +1,16 @@
+package Demo;
+
+import java.util.Date;
+import java.util.Random;
+
+public class RandomNumber {
+	public static void main(String[] args) {
+		Random random = new Random();
+		System.out.println(random.nextInt(11)+10);	
+		System.out.println(Long.MAX_VALUE);
+		@SuppressWarnings("deprecation")
+		Date d = new Date("03/10/1996");// depricated - no longer in use
+		System.out.println(d);
+	}
+	
+}

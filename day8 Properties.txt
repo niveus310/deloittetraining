@@ -1,0 +1,16 @@
+package Demo;
+
+import java.util.Enumeration;
+import java.util.Properties;
+
+public class UsingProperties {
+	public static void main(String[] args) {
+		Properties p = System.getProperties();
+		Enumeration<Object> e = p.elements();
+		while(e.hasMoreElements())
+		{
+			System.out.println(e.nextElement());
+		}
+	}
+
+}
