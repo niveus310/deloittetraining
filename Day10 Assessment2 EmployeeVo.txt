@@ -1,0 +1,108 @@
+package com.deloittetraining.assessment2.exercise2;
+
+public class EmplyeeVo implements Comparable<EmplyeeVo> {
+	
+	int empid;
+	String empName;
+	Double annualIncome;
+	Double incomeTax;
+	
+	public EmplyeeVo(int empid, String empName, Double annualIncome) {
+		super();
+		this.empid = empid;
+		this.empName = empName;
+		this.annualIncome = annualIncome;
+		EmplyeeBo bo = new EmplyeeBo();
+		bo.calincomeTax(this); 
+	}
+
+	public int getEmpid() {
+		return empid;
+	}
+
+	public void setEmpid(int empid) {
+		this.empid = empid;
+	}
+
+	public String getEmpName() {
+		return empName;
+	}
+
+	public void setEmpName(String empName) {
+		this.empName = empName;
+	}
+
+	public Double getAnnualIncome() {
+		return annualIncome;
+	}
+
+	public void setAnnualIncome(Double annualIncome) {
+		this.annualIncome = annualIncome;
+	}
+
+	public Double getIncomeTax() {
+		return incomeTax;
+	}
+
+	public void setIncomeTax(Double incomeTax) {
+		this.incomeTax = incomeTax;
+	}
+
+	@Override
+	public String toString() {
+		return "EmplyeeVo [empid=" + empid + ", empName=" + empName + ", annualIncome=" + annualIncome + ", incomeTax="
+				+ incomeTax + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((annualIncome == null) ? 0 : annualIncome.hashCode());
+		result = prime * result + ((empName == null) ? 0 : empName.hashCode());
+		result = prime * result + empid;
+		result = prime * result + ((incomeTax == null) ? 0 : incomeTax.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EmplyeeVo other = (EmplyeeVo) obj;
+		if (annualIncome == null) {
+			if (other.annualIncome != null)
+				return false;
+		} else if (!annualIncome.equals(other.annualIncome))
+			return false;
+		if (empName == null) {
+			if (other.empName != null)
+				return false;
+		} else if (!empName.equals(other.empName))
+			return false;
+		if (empid != other.empid)
+			return false;
+		if (incomeTax == null) {
+			if (other.incomeTax != null)
+				return false;
+		} else if (!incomeTax.equals(other.incomeTax))
+			return false;
+		return true;
+	}
+
+	@Override
+	public int compareTo(EmplyeeVo o) {
+		if(this.getAnnualIncome() > o.getAnnualIncome())
+			return 1;
+			
+		else
+			return -1;
+			}
+	
+	
+
+}

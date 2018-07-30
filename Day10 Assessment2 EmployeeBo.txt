@@ -1,0 +1,24 @@
+package com.deloittetraining.assessment2.exercise2;
+
+public class EmplyeeBo {
+
+		public void calincomeTax(EmplyeeVo emplyeeVo)
+		{
+			if(( emplyeeVo).getAnnualIncome()<=250000)
+			{
+				emplyeeVo.setIncomeTax(0.0);
+			}
+			else if (emplyeeVo.getAnnualIncome()<=500000)
+			{
+				emplyeeVo.setIncomeTax(emplyeeVo.getAnnualIncome()*0.05);
+			}
+			else if (emplyeeVo.getAnnualIncome()<=1000000)
+			{
+				emplyeeVo.setIncomeTax(emplyeeVo.getAnnualIncome()*0.2);
+			}
+			else 
+			{
+				emplyeeVo.setIncomeTax(emplyeeVo.getAnnualIncome()*0.3);
+			}
+		}
+}

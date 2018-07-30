@@ -1,0 +1,15 @@
+package com.deloittetraining.assessment2.exercise2;
+
+import java.util.Comparator;
+
+public class Emplyeesort implements Comparator<EmplyeeVo> {
+
+	@Override
+	public int compare(EmplyeeVo o1, EmplyeeVo o2) {
+		if(o1.getAnnualIncome().compareTo(o2.getAnnualIncome())>0)
+			return 1;
+		else 
+			return -1;
+}
+
+}

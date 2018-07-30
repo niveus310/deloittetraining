@@ -1,0 +1,98 @@
+package com.deloittetraining.assessment2.exercise1;
+
+import java.util.Scanner;
+
+public abstract class Arithmetic {
+	int num1,num2,num3;
+	//Default Constructor
+	public Arithmetic()
+	{}
+	//Parameterized Constructor
+	public Arithmetic(int num1,int num2)
+	{this.num1=num1;
+	this.num2=num2;
+	num3=0;}
+	
+	//Getters and Setters
+	public int getNum1() 
+	{return num1;}
+
+	public void setNum1(int num1) 
+	{this.num1 = num1;}
+
+	public int getNum2() 
+	{return num2;}
+
+	public void setNum2(int num2) 
+	{this.num2 = num2;}
+
+	//Function to get values
+	public void getValues()
+	{int num1, num2;
+		Scanner scanner = new Scanner(System.in);
+	System.out.println("Enter num1 : ");
+	num1=scanner.nextInt();
+	System.out.println("Enter num2 : ");
+	num2=scanner.nextInt();
+	setNum1(num1);
+	setNum2(num2);
+	scanner.close();
+	}
+	
+
+	//Function to display the values
+	public void display()
+	{
+		System.out.println("Num1 = "+num1);
+		System.out.println("Num2 = "+num2);
+		System.out.println("Result = "+num3);
+	}
+
+	//Abstract Class Calculate
+	public abstract void calculate();
+	
+}
+
+//Child of Arithmetic
+class Addition extends Arithmetic
+{
+
+	//Overriding calculate
+	@Override
+	public void calculate()
+	{num3 = num1+num2;}
+}
+
+//Child of Arithmetic
+class Subtraction extends Arithmetic
+{
+
+	//Overriding calculate
+	@Override
+	public void calculate() 
+	{num3=num1-num2;}
+	
+}
+
+//Child of Arithmetic
+class Multiplication extends Arithmetic
+{
+
+	//Overriding calculate
+	@Override
+	public void calculate() 
+	{num3=num1*num2;}
+	
+}
+
+//Child of Arithmetic
+class Division extends Arithmetic
+{
+
+	//Overriding calculate
+	@Override
+	public void calculate() 
+	{num3=num1/num2;}
+	
+}
+
