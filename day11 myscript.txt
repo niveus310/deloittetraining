@@ -1,0 +1,19 @@
+
+	var message1 = document.getElementById("message1");
+	function askInput()
+	{
+	var name = prompt("Enter your name");
+	if(name.length==0)
+		{alert("Enter your name");}
+	else {message1.innerHTML = "Hello "+name;}
+	}
+	
+	function display()
+	{
+		var r = confirm ("Are you sure you want to log out?");
+		if(r)
+			message1.innerHTML = "Hello Guest";
+		else
+			alert("Welcome again");
+		}
+	

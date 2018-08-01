@@ -1,0 +1,40 @@
+package com;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class CustomerSaveServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	public CustomerSaveServlet() {
+        super();
+        }
+
+       
+	protected void service(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		 Connection connection = MyConnection.getConnection();
+		 int custid =Integer.parseInt(request.getParameter("customerId"));
+		 String custname = request.getParameter("customerName");
+		 
+		 PreparedStatement statement = null;
+		
+		 try {statement = connection.prepareStatement("insert into customer100 values(?,?)");
+			 statement.setInt(1, custid);
+			 statement.setString(2, custname);
+			 statement.executeUpdate();
+		} catch (SQLException e) {}
+		 
+		 
+		response.getWriter().println("<href a = 'success.html'><h1>Data Stored Successfully</h1></a>"); 
+			
+	}
+		
+}

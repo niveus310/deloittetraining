@@ -1,0 +1,132 @@
+package com.deloitte.javatraining.daoimpl;
+
+import java.sql.Statement;
+import java.sql.Connection;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.deloitte.javatraining.dao.CustomerDAO;
+import com.deloitte.javatraining.dbcon.DBConnection;
+import com.deloitte.javatraining.entity.Customer;
+
+public class CustomerDAOImpl implements CustomerDAO {
+	Connection connection = DBConnection.getConnection();
+	int result;
+	
+	//inserting customer details
+	@Override
+	public String insertCustomerDetail(Customer customer) {
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = connection.prepareStatement("insert into customer values(?,?,?,?)");
+			preparedStatement.setInt(1,customer.getCustomerId());
+			preparedStatement.setString(2,customer.getCustomerName());
+			preparedStatement.setString(3,customer.getCustomerAddress());
+			preparedStatement.setInt(4,customer.getBillAmount());
+			result = preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if(result == 0)
+			return "insert failed";
+		else
+			return "insert succeessful";
+	}
+
+	//finding customer by customer id
+	@Override
+	public Customer findByCustomerId(int customerId) {
+		Customer customer=new Customer();
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = connection.prepareStatement("select * from customer where customerId = ?");
+			preparedStatement.setInt(1, customerId);
+			ResultSet result = preparedStatement.executeQuery();
+			result.next();
+			customer.setCustomerId(result.getInt(1));
+			customer.setCustomerName(result.getString(2));
+			customer.setCustomerAddress(result.getString(3));
+			customer.setBillAmount(result.getInt(4));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return customer;	
+	}
+
+	@Override
+	public boolean isCustomerExist(int customerId) {
+		boolean exists = false;
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = connection.prepareStatement("select * from customer where customerId = ?");
+			preparedStatement.setInt(1, customerId);
+			ResultSet result = preparedStatement.executeQuery();
+			exists = result.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return exists;
+	}
+
+	@Override
+	public boolean deleteCustomer(int customerId) {
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = connection.prepareStatement("delete from customer where customerId = ?");
+			preparedStatement.setInt(1, customerId);
+			result = preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if(result == 0)
+			return false;
+		else
+			return true;
+	}
+
+	@Override
+	public Customer updateCustomer(int customerId, Customer customer) {
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = connection.prepareStatement("update customer set customerAddress = ?,billAmount = ? where customerId = ?");
+			preparedStatement.setString(1, customer.getCustomerAddress());
+			preparedStatement.setInt(2, customer.getBillAmount());
+			preparedStatement.setInt(3, customerId);
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Customer customernew = findByCustomerId(customerId);
+		return customernew;
+	}
+
+	@Override
+	public List<Customer> listAllCustomer() {
+		Statement statement;
+		Customer customer = new Customer();
+		List<Customer> allCustomers = new ArrayList<Customer>();
+		try {
+			statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery("select * from customer");
+			while(resultSet.next())
+			{
+				customer.setCustomerId(resultSet.getInt(1));
+				customer.setCustomerName(resultSet.getString(2));
+				customer.setCustomerAddress(resultSet.getString(3));
+				customer.setBillAmount(resultSet.getInt(4));
+				allCustomers.add(customer);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return allCustomers;
+	}
+
+}

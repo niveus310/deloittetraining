@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+function askInput()
+{
+var message1 = document.getElementById("message1");
+var name = prompt("Enter your name");
+if(name.length==0)
+	{alert("Enter your name");}
+else {message1.innerHTML = "Hello "+name;}
+}
+
+function display()
+{
+var message1 = document.getElementById("message1");
+var r = confirm ("Are you sure you want to log out?");
+if(r)
+	message1.innerHTML = "Hello Guest";
+else
+	alert("Welcome again");
+}
+</script>
+</head>
+<body>
+<input type = "Button" value="Login" onclick="askInput()">
+<div id ="message1">Hello Guest</div>
+<input type = "Button" value="Logout" onclick="display()">
+</body>
+</html>

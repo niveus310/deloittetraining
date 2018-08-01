@@ -1,0 +1,42 @@
+package com;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.deloitte.javatraining.dao.CustomerDAO;
+import com.deloitte.javatraining.daoimpl.CustomerDAOImpl;
+import com.deloitte.javatraining.entity.Customer;
+
+public class CustomerSaveServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	public CustomerSaveServlet() {
+        super();
+        }
+
+       
+	protected void service(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		 int customerId =Integer.parseInt(request.getParameter("customerId"));
+		  String customerName = request.getParameter("customerName");
+		 String customerAddress = request.getParameter("customerAddress");
+		 int billAmount =Integer.parseInt(request.getParameter("billAmount"));
+		 if(customerId <1)
+		 {
+			 response.sendRedirect("Login.html");
+		 }
+		 CustomerDAO customerDAO = new CustomerDAOImpl();
+		 Customer customer = new Customer(customerId, customerName, customerAddress, billAmount);
+		customerDAO.insertCustomerDetail(customer); 
+		response.getWriter().println("<a href =success.html><h1>Data Stored Successfully</h1></a>"); 
+		RequestDispatcher dispatcher = request.getRequestDispatcher("Success");
+		dispatcher.include(request, response);
+			
+	}
+		
+}

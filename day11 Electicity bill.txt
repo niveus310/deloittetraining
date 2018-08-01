@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<script>
+function billCalc()
+{
+var bill = window.prompt("Enter you bill amount");
+var card = window.prompt("Enter card number");
+var d = new Date();
+var day = d.getDate();
+var diff = day-15;
+
+if(diff>0)
+	{ var a = parseInt(bill);
+		var bill2 = (diff*50)+a;
+	alert("Your bill amount is "+ (bill2));}
+else
+	{alert("Your bill amount is "+bill);}	
+}
+</script>
+<body>
+<input type ="button" value="Bill Amount" onclick="billCalc()">
+</body>
+</html>

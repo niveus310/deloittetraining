@@ -1,0 +1,74 @@
+package com.deloitte.javatraining.daoimpl;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.deloitte.javatraining.dao.CustomerDAO;
+import com.deloitte.javatraining.entity.Customer;
+
+class CustomerDAOImplTest {
+	CustomerDAO customerDAO;
+	@BeforeEach
+	void setUp() throws Exception {
+	customerDAO = new CustomerDAOImpl();
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+		customerDAO = null;
+	}
+
+	@Test
+	void testInsertCustomerDetail() {
+		Customer customer = new Customer(11, "Rinu", "Bangalore", 59000);
+		assertEquals("insert succeessful",customerDAO.insertCustomerDetail(customer));
+		}
+
+	@Test
+	void testFindByCustomerId() {
+		Customer customer = new Customer(1, "Neha", "Pune", 12000);
+		assertEquals(customer,customerDAO.findByCustomerId(1));
+	}
+
+	@Test
+	void testIsCustomerExist() {
+		assertEquals(true, customerDAO.isCustomerExist(11));
+	}
+
+	@Test
+	void testDeleteCustomer() {
+		assertEquals(true, customerDAO.deleteCustomer(11));
+	}
+
+	@Test
+	void testUpdateCustomer() {
+		Customer customer = new Customer(11, "Rinu", "Chennai", 69000);
+		assertEquals(customer,customerDAO.updateCustomer(11, customer));
+	}
+
+	@Test
+	void testListAllCustomer() {
+		List<Customer> allCustomers = new ArrayList<Customer>();
+		allCustomers.add(new Customer(11,"Rinu","Bangalore",59000));
+		allCustomers.add(new Customer(7,"Juno","Texas",68990)); 
+		allCustomers.add(new Customer(5,"Sanju","Hyderabad",7000));
+		allCustomers.add(new Customer(1,"Neha","Pune",12000));
+		 allCustomers.add(new Customer(2,"Pooja","Delhi",15000));
+		 allCustomers.add(new Customer(3,"Priya","Chennai",1500));
+		 allCustomers.add(new Customer(4,"Reema","Chennai",17000));
+		 allCustomers.add(new Customer(10,"Nive","Chennai",8300));
+		 allCustomers.add(new Customer(8,"Adhi","jaipur",17500));
+		 allCustomers.add(new Customer(6,"Mani","Goa",15900));
+		 allCustomers.add(new Customer(9,"Janu","Ohio",17500));
+		 
+		 
+         assertEquals(allCustomers,customerDAO.listAllCustomer());
+	}
+
+}
