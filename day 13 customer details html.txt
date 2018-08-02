@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form name="loginform" action="NewCustomer.jsp">
+<table>
+<tr><td>Customer Id (Required): </td><td><input type ="text" id ="cId" name ="customerId"></td></tr>
+<tr><td>Customer Name (Required): </td><td><input type ="text" id = "cName" name ="customerName"></td></tr>
+<tr><td>Customer Address (Required): </td><td><input type ="text" id = "cAddress" name ="customerAddress"></td></tr>
+<tr><td>Bill Amount (Required): </td><td><input type ="text" id = "bAmt" name ="billAmount"></td></tr>
+</table>
+<input type = "Submit" value="Enter Values" >
+</form>
+</body>
+<div id="message1"></div>
+</html>

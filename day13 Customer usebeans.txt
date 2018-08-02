@@ -1,0 +1,21 @@
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<body>
+<jsp:useBean id="cust" class="com.customer.jspdemo.Customer"  scope="request"></jsp:useBean>
+<jsp:setProperty property="customerId" name="cust" param="customerId"/>
+<jsp:setProperty property="customerName" name="cust" param="customerName"/>
+<jsp:setProperty property="customerAddress" name="cust" param="customerAddress"/>
+<jsp:setProperty property="billAmount" name="cust" param="billAmount"/>
+<h1>Customer Details via UseBean tag</h1>
+<h3>Customer Id : <jsp:getProperty property="customerId" name="cust"/><br/></h3>
+<h3>Customer Name : <jsp:getProperty property="customerName" name="cust"/><br/></h3>
+<h3>Customer Address : <jsp:getProperty property="customerAddress" name="cust"/><br/></h3>
+<h3>Bill Amount : <jsp:getProperty property="billAmount" name="cust"/><br/></h3>
+
+<jsp:forward page="Thanks.jsp"></jsp:forward>
+<a href = "Thanks.jsp">Thanks</a>
+</body>
+</html>

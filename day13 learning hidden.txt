@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form method = "get" action = "Welcome">
+	Username : <input type = "text" name = "username">
+	<br/>
+	<input type = "hidden" name = "some" value="This is hidden">
+	<input type = "submit" value ="Go">
+	
+</form>
+<a href="Welcome?quantity=100">Welcome</a>
+</body>
+</html>
