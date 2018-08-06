@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="InheritanceDemos2.Employee" table="EmployeeMain">
+	
+		<id name="employeeId" type="int" column="EID">
+			<generator class="increment"/>
+		</id>
+		<property name="employeeName" column="EName"/>
+	
+	</class>
+	
+		<joined-subclass name ="InheritanceDemos2.RegularEmployee" table="EmpReg" extends="InheritanceDemos2.Employee">
+		<key column="employeeId"></key>
+		<property name="regulareEmployeeSalary" column="RegSal"></property>
+		<property name="regulareEmployeeBonus" column="RegBonus"></property>
+		</joined-subclass>
+	
+		<joined-subclass name="InheritanceDemos2.ContractEmployee" table="ComEmp" extends="InheritanceDemos2.Employee" >
+		<key column="employeeId"></key>
+		<property name="payPerHour" column="PayPerHour"></property>
+		<property name="duration" column="Duration"></property>
+		</joined-subclass>
+	
+</hibernate-mapping>

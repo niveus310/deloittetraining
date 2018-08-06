@@ -1,0 +1,42 @@
+package com.deloitte.javatraining.entity;
+
+import java.util.Iterator;
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.classic.Session;
+import org.hibernate.criterion.Restrictions;
+
+public class MainGetAllTheRecords {
+	public static void main(String[] args) {
+		Customer customer = new Customer();
+		//load hibernate connection
+		Configuration configuration = new Configuration().configure();
+		//create session factory
+		SessionFactory factory = configuration.buildSessionFactory();
+		//opening session
+		Session session = factory.openSession();
+		Criteria criteria = session.createCriteria(Customer.class)
+		.add(Restrictions.like("customerName", "%m%"));
+		List<Customer> list = criteria.list();
+		Iterator<Customer> j = list.iterator();
+		System.out.println("Printing based on Criteria");
+		while(j.hasNext())
+		{
+			customer=j.next();
+			System.out.println(customer);
+		}
+		Query query = session.createQuery("from com.deloitte.javatraining.entity.Customer");
+		Iterator<Customer> i = query.iterate();
+		System.out.println("Printing All");
+		while(i.hasNext())
+		{
+			customer=i.next();
+			System.out.println(customer);
+		}
+	}
+
+}
